@@ -1,6 +1,8 @@
-﻿namespace HotGlobus.Core.System
+﻿using System;
+
+namespace HotGlobus.Core.System
 {
-    public interface ISystem
+    public interface ISystem : IDisposable
     {
     }
 }
