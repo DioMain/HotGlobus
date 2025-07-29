@@ -16,10 +16,11 @@ namespace HotGlobus.Core
 
         public DependencyInjectionKernel DependencyInjection { get; private set; }
 
+        public LocalManagerCore Local { get; private set; }
+
         [SerializeField]
-        private GlobalManagerCore global;
-        [SerializeField]
-        private LocalManagerCore local;
+        private GlobalManagerCore globalInstance;
+        public GlobalManagerCore Global => globalInstance;
 
         private Coroutine delayedLocalInitializeCoroutine = null;
 
@@ -45,7 +46,9 @@ namespace HotGlobus.Core
 
             GlobalIsReady = false;
 
-            global.Initialize();
+            DependencyInjection.Singletons.Add(Global);
+
+            Global.Initialize();
 
             GlobalIsReady = true;
         }
@@ -54,6 +57,9 @@ namespace HotGlobus.Core
         {
             if (!scene.isLoaded)
                 return;
+
+            if (Local != null && DependencyInjection.Singletons.Contains(Local))
+                DependencyInjection.Singletons.Remove(Local);
 
             if (delayedLocalInitializeCoroutine != null)
                 StopCoroutine(delayedLocalInitializeCoroutine);
@@ -65,9 +71,11 @@ namespace HotGlobus.Core
         {
             yield return new WaitWhile(() => !GlobalIsReady);
 
-            local = GameObject.FindWithTag(LocalTag).GetComponent<LocalManagerCore>();
+            Local = GameObject.FindWithTag(LocalTag).GetComponent<LocalManagerCore>();
 
-            local.Initialize();
+            DependencyInjection.Singletons.Add(Local);
+
+            Local.Initialize();
         }
     }
 }

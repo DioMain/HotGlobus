@@ -7,8 +7,6 @@ namespace HotGlobus
     {
         public override void Initialize()
         {
-            GameManager.Instance.DependencyInjection.Singletons.Add(this);
-
             base.Initialize();
         }
     }

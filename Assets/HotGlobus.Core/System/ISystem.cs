@@ -1,8 +1,9 @@
-﻿using System;
+﻿using HotGlobus.Core.Interfaces;
 
 namespace HotGlobus.Core.System
 {
-    public interface ISystem : IDisposable
+    public interface ISystem : ILogicEndPoint
     {
+
     }
 }

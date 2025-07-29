@@ -2,8 +2,7 @@ using HotGlobus.Core.DI;
 
 namespace HotGlobus.Core.Service
 {
-    public interface IService : IGlobalInjectable
+    public interface IService : IGlobalInjectable, IInjectTarget
     {
-
     }
 }

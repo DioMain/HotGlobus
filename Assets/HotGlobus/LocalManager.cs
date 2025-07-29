@@ -1,5 +1,5 @@
 ﻿using HotGlobus.Common;
-using HotGlobus.Core;
+using HotGlobus.Core.Service;
 
 namespace HotGlobus
 {
@@ -7,9 +7,13 @@ namespace HotGlobus
     {
         public override void Initialize()
         {
-            GameManager.Instance.DependencyInjection.Singletons.Add(this);
-
             base.Initialize();
+
+            var testService = new TestService();
+
+            DI.InjectInto(testService);
+
+            testService.Test();
         }
     }
 }

@@ -1,6 +1,8 @@
+using HotGlobus.Core.DI;
+
 namespace HotGlobus.Core.Helper
 {
-    public interface IHelper
+    public interface IHelper : IGlobalInjectable
     {
 
     }

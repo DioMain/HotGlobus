@@ -27,7 +27,7 @@ namespace HotGlobus.Core.DI
 
         public void InjectInto(IInjectTarget target, params IInjectable[] additionalDependencies)
         {
-            FieldInfo[] injectFields = target.GetType().GetFields()
+            FieldInfo[] injectFields = target.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
                                                        .Where(f => f.IsDefined(typeof(Inject)))
                                                        .ToArray();
 
@@ -35,9 +35,9 @@ namespace HotGlobus.Core.DI
             {
                 IInjectable injectable = null;
 
-                injectable = additionalDependencies.FirstOrDefault(i => i.GetType() == field.FieldType);
+                injectable = additionalDependencies.FirstOrDefault(ad => ad.GetType() == field.FieldType || field.FieldType.IsAssignableFrom(ad.GetType()));
 
-                injectable ??= Singletons.FirstOrDefault(s => s.GetType() == field.FieldType);
+                injectable ??= Singletons.FirstOrDefault(s => s.GetType() == field.FieldType || field.FieldType.IsAssignableFrom(s.GetType()));
 
                 if (injectable == null)
                 {
