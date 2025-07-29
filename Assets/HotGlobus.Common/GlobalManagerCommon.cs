@@ -1,15 +1,15 @@
 using HotGlobus.Core;
-using UnityEngine;
+using HotGlobus.Core.DI;
 
-namespace HotGlobus
+namespace HotGlobus.Common
 {
-    public class GlobalManagerCommon : GlobalManagerCore
+    public class GlobalManagerCommon : GlobalManagerCore, IInjectable
     {
         public override void Initialize()
         {
+            GameManager.Instance.DependencyInjection.Singletons.Add(this);
+
             base.Initialize();
-
-
         }
     }
 }

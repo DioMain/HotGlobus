@@ -1,4 +1,5 @@
-using UnityEngine;
+using HotGlobus.Common;
+using HotGlobus.Core;
 
 namespace HotGlobus
 {
@@ -6,9 +7,9 @@ namespace HotGlobus
     {
         public override void Initialize()
         {
+            GameManager.Instance.DependencyInjection.Singletons.Add(this);
+
             base.Initialize();
-
-
         }
     }
 }

@@ -1,6 +1,8 @@
+using HotGlobus.Core.DI;
+
 namespace HotGlobus.Core.Service
 {
-    public interface IService
+    public interface IService : IGlobalInjectable
     {
 
     }
