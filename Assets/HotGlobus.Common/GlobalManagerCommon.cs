@@ -8,6 +8,8 @@ namespace HotGlobus
         public override void Initialize()
         {
             base.Initialize();
+
+
         }
     }
 }

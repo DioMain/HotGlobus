@@ -1,8 +1,8 @@
-using UnityEngine;
+﻿using HotGlobus.Core;
 
-namespace HotGlobus
+namespace HotGlobus.Common
 {
-    public class GlobalManager : GlobalManagerCommon
+    public class LocalManagerCommon : LocalManagerCore
     {
         public override void Initialize()
         {
