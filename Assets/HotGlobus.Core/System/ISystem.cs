@@ -1,6 +1,9 @@
-﻿namespace HotGlobus.Core.System
+﻿using HotGlobus.Core.Interfaces;
+
+namespace HotGlobus.Core.System
 {
-    public interface ISystem
+    public interface ISystem : ILogicEndPoint
     {
+
     }
 }
