@@ -5,11 +5,12 @@ namespace HotGlobus.Core.Manager
     public abstract class ManagerBase<T> : IManager<T>
         where T : IContainer
     {
-        protected T Container { get; private set; }
+        private readonly T container;
+        public T Container => container;
 
         public ManagerBase(T container)
         {
-            Container = container;
+            this.container = container;
         }
     }
 }
