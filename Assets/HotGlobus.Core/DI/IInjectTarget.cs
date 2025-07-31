@@ -1,6 +1,6 @@
 ﻿namespace HotGlobus.Core.DI
 {
-    public interface ISupportInject
+    public interface IInjectTarget
     {
 
     }
