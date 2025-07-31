@@ -45,7 +45,7 @@ namespace HotGlobus.Core.DI
 
                     if (injectableType == null)
                     {
-                        Debug.LogError($"Зависимость не найдена: [{field.Name}, {field.FieldType.Name}]");
+                        Debug.LogError($"Зависимость не найдена: [{field.Name}, {field.FieldType.Name}] в {target.GetType().Name}");
                         break;
                     }
 

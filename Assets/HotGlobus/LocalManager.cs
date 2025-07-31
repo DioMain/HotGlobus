@@ -1,19 +1,19 @@
 ﻿using HotGlobus.Common;
-using HotGlobus.Core.Service;
+using HotGlobus.Core.Container;
+using UnityEngine;
 
 namespace HotGlobus
 {
     public class LocalManager : LocalManagerCommon
     {
+        [SerializeField]
+        private SimpleContainer testContainer;
+
         public override void Initialize()
         {
             base.Initialize();
 
-            var testService = new TestService();
-
-            DI.InjectInto(testService);
-
-            testService.Test();
+            testContainer.Initialize();
         }
     }
 }
